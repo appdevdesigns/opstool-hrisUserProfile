@@ -1,0 +1,27 @@
+{
+    "name": "opstool-hrisUserProfile",
+    "version": "0.0.0",
+    "description": "(plugin) An Ops Portal plugin for allowing a user to manage their own HR information.",
+    "main": "module.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "make test",
+        "postinstall": "node setup/setup.js",
+        "postupdate": "node setup/setup.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/appdevdesigns/opstool-hrisUserProfile.git"
+    },
+    "author": "Johnny Hausman",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/appdevdesigns/opstool-hrisUserProfile/issues"
+    },
+    "homepage": "https://github.com/appdevdesigns/opstool-hrisUserProfile",
+    "dependencies": {
+        "ad-utils": "git://github.com/appdevdesigns/ad-utils"
+    }
+}
