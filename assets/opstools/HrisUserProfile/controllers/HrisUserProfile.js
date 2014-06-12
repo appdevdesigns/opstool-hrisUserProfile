@@ -4,7 +4,8 @@ steal(
         'appdev',
         'bootstrap/js/bootstrap.min.js',
         'styles/font-awesome.css',
-    
+        'js/GenericList.js',
+
 function(){
 
 

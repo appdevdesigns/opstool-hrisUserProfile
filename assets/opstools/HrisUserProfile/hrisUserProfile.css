@@ -1,0 +1,91 @@
+.hris-user-widget { left: 0; overflow: hidden; padding: 0 0 0 15px; position: relative; top: 0; }
+.hris-user-profile-widget { padding: 0; }
+#hris-user-widget { padding-bottom: 102px; }
+
+
+#hris-user-list li .hris-nav-list-item, #hris-user-profile-list li .hris-nav-list-item {
+    opacity: 1 !important;
+}
+.hris-user-avatar {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    height: auto;
+    margin: 10px 0;
+    width: 125px;
+}
+.hris-user-avatar-th {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    width: 65px;
+}
+#hris-user-overview-summary ul {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+#hris-user-overview-summary ul li {
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    display: block;
+    margin: 5px 0;
+    padding: 5px 5px 5px 15px;
+    position: relative;
+}
+#hris-user-overview-summary ul li:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
+    border-left: 5px solid rgba(0, 0, 0, 0.1);
+}
+.hris-profile-table, .hris-profile-table-edit {
+    position: relative;
+}
+.hris-profile-table td.hris-profile-attr, .hris-profile-table-edit td.hris-profile-attr {
+    border-right: 1px solid #CCCCCC;
+    font-weight: bold;
+    width: 40%;
+}
+.hris-profile-table tr, .hris-profile-table tr {
+}
+.hris-profile-table tr span.opsportal-item-icon {
+    display: block;
+    float: right;
+    opacity: 0;
+}
+.hris-profile-table tr:hover span {
+    opacity: 1;
+}
+.hris-profile-table tr:hover td, .hris-profile-table-edit tr:hover td {
+    background-color: #F5F5F5;
+}
+.hris-edit-avatar {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0 !important;
+    position: relative;
+    width: 127px;
+}
+.hris-edit-avatar img {
+    border: 0 none !important;
+    display: block;
+    margin: 0 !important;
+}
+.hris-edit-avatar a {
+    background-color: #333333;
+    border: 0 none;
+    color: #FFFFFF !important;
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+    width: 100%;
+}
+.hris-edit-avatar a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.hris-form-help {
+    line-height: 34px;
+}
+.hris-form-delete {
+    display: block;
+    margin-top: 6px;
+}
