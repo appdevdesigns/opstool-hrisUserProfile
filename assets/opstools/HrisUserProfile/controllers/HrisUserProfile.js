@@ -2,8 +2,8 @@
 steal(
         // List your Controller's dependencies here:
         'appdev',
-        'bootstrap/js/bootstrap.min.js',
-        'styles/font-awesome.css',
+//        'bootstrap/js/bootstrap.min.js',
+//        'styles/font-awesome.css',
     
 function(){
 
