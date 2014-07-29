@@ -6,6 +6,9 @@ steal(
         'styles/font-awesome.css',
         'js/GenericList.js',
 
+//        'bootstrap/js/bootstrap.min.js',
+//        'styles/font-awesome.css',
+   
 function(){
 
 
