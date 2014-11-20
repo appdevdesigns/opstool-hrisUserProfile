@@ -1,6 +1,6 @@
 {
   "name": "opstool-hrisUserProfile",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "(plugin) An Ops Portal plugin for allowing a user to manage their own HR information.",
   "main": "module.js",
   "directories": {
