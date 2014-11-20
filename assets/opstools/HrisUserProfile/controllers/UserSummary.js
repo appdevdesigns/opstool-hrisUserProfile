@@ -2,19 +2,17 @@
 steal(
         // List your Controller's dependencies here:
         'appdev',
-        //'js/GenericList.js',
-        //'opstools/HrisAdminObjects/models/APIObject.js',
+        '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs',
 function(){
 
-    //if (typeof AD.controllers.opstools == 'undefined') AD.controllers.opstools = {};
-    //if (typeof AD.controllers.opstools.HrisUserProfile == 'undefined') AD.controllers.opstools.HrisUserProfile = {};
-    AD.controllers.opstools.HrisUserProfile.UserSummary = can.Control.extend({
+
+    AD.Control.extend('opstools.HrisUserProfile.UserSummary', { 
 
 
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs',
+                    templateDOM: '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs'
             }, options);
 
             this.initDOM();
@@ -28,8 +26,8 @@ function(){
 				
             });
 
-
         },
+
 
         initDOM: function() {
             var self = this;
@@ -37,6 +35,7 @@ function(){
             // insert our base DOM with the Column contents: objectlist, and bottom elements
             this.element.html(can.view(this.options.templateDOM, {} ));
         },
+        
 
 		'.opsportal-filter-tag click':function($el, ev) {
 			var self = this,

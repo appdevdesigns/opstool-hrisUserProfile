@@ -1,18 +1,16 @@
-
 steal(
         // List your Controller's dependencies here:
         'appdev',
+        '//opstools/HrisUserProfile/views/UserList/UserList.ejs',
 function(){
 
-    //if (typeof AD.controllers.opstools == 'undefined') AD.controllers.opstools = {};
-    //if (typeof AD.controllers.opstools.HrisUserProfile == 'undefined') AD.controllers.opstools.HrisUserProfile = {};
-    AD.controllers.opstools.HrisUserProfile.UserList = can.Control.extend({
 
+    AD.Control.extend('opstools.HrisUserProfile.UserList', { 
 
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserList/UserList.ejs',
+                    templateDOM: '//opstools/HrisUserProfile/views/UserList/UserList.ejs'
             }, options);
 
             this.initDOM();
