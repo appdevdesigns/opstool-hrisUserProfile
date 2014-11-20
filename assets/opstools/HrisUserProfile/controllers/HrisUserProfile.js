@@ -2,24 +2,21 @@
 steal(
         // List your Controller's dependencies here:
         'appdev',
-        'bootstrap/js/bootstrap.min.js',
-        'styles/font-awesome.css',
-        'js/GenericList.js',
+        'bootstrap.js',
+        'font-awesome.css',
+        'GenericList.js',
+        'OpsPortal/classes/OpsTool.js',
+        'opstools/HrisUserProfile/controllers/UserList.js',
+        'opstools/HrisUserProfile/controllers/UserProfileList.js',
+        'opstools/HrisUserProfile/controllers/UserSummary.js',
 
-//        'bootstrap/js/bootstrap.min.js',
-//        'styles/font-awesome.css',
+        // views:
+        '//opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
    
 function(){
 
 
-    // Namespacing conventions:
-    // AD.controllers.opstools.[Tool].Tool  --> main controller for tool
-    // AD.controllers.opstools.[Tool].[controller] --> sub controllers for tool
-    // AD.controllers.opstools.HrisAdminObjects.Tool = can.Control.extend({
-
-    if (typeof AD.controllers.opstools == 'undefined') AD.controllers.opstools = {};
-    if (typeof AD.controllers.opstools.HrisUserProfile == 'undefined') AD.controllers.opstools.HrisUserProfile = {};
-    AD.controllers.opstools.HrisUserProfile.Tool = AD.classes.opsportal.OpsTool.extend({
+    AD.Control.OpsTool.extend('HrisUserProfile', {
 
         init: function( element, options ) {
             var self = this;
@@ -62,9 +59,6 @@ function(){
         },
 
 
-
-
-
         initDOM: function() {
 
             this.element.html(can.view(this.options.templateDOM, {} ));
@@ -101,7 +95,7 @@ function(){
         '.ad-item-add click': function($el, ev) {
 
             ev.preventDefault();
-        },
+        }
 
 
     });

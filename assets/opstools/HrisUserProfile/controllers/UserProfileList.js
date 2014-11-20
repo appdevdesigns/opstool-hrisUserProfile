@@ -2,19 +2,17 @@
 steal(
         // List your Controller's dependencies here:
         'appdev',
-        //'js/GenericList.js',
-        //'opstools/HrisAdminObjects/models/APIObject.js',
+        'opstools/HrisUserProfile/views/UserProfileList/UserProfileList.ejs',
 function(){
 
-    //if (typeof AD.controllers.opstools == 'undefined') AD.controllers.opstools = {};
-    //if (typeof AD.controllers.opstools.HrisUserProfile == 'undefined') AD.controllers.opstools.HrisUserProfile = {};
-    AD.controllers.opstools.HrisUserProfile.UserProfileList = can.Control.extend({
+
+    AD.Control.extend('opstools.HrisUserProfile.UserProfileList', { 
 
 
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserProfileList/UserProfileList.ejs',
+                    templateDOM: '//opstools/HrisUserProfile/views/UserProfileList/UserProfileList.ejs'
             }, options);
 
             this.initDOM();
@@ -38,6 +36,7 @@ function(){
             });
         },
 
+
         initDOM: function() {
             var self = this;
 
@@ -45,6 +44,7 @@ function(){
             this.element.html(can.view(this.options.templateDOM, {} ));
         },
 		
+        
 		'#hris-user-profile-list .genlist-item click':function($el, ev) {
 			var self = this,
 				myType = self.element.find($el).data('hris-attr');
