@@ -15,6 +15,9 @@ function(){
                     templateDOM: '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs'
             }, options);
 
+            // call parent init()
+            this._super(element, options);
+
             this.initDOM();
 
 			this.element.find('#idOfPassportDiv').hide();

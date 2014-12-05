@@ -13,6 +13,9 @@ function(){
                     templateDOM: '//opstools/HrisUserProfile/views/UserList/UserList.ejs'
             }, options);
 
+            // call parent init()
+            this._super(element, options);
+
             this.initDOM();
 
             // listen for resize notifications

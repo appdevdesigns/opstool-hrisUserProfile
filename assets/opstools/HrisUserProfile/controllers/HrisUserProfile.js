@@ -27,6 +27,9 @@ function(){
             }, options);
             this.options = options;
 
+            // call parent init()
+            this._super(element, options);
+
             // Call parent init
             AD.classes.opsportal.OpsTool.prototype.init.apply(this, arguments);
 
