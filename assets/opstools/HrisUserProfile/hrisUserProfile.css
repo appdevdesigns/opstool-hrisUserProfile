@@ -6,7 +6,7 @@
 #hris-user-list li .hris-nav-list-item, #hris-user-profile-list li .hris-nav-list-item {
     opacity: 1 !important;
 }
-.hris-user-avatar {
+/*.hris-user-avatar {
     border: 1px solid rgba(0, 0, 0, 0.1);
     display: block;
     height: auto;
@@ -17,8 +17,8 @@
     display: inline-block;
     margin: 0 10px 0 0;
     width: 65px;
-}
-#hris-user-overview-summary ul {
+}*/
+/*#hris-user-overview-summary ul {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 #hris-user-overview-summary ul li {
@@ -32,6 +32,7 @@
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
     border-left: 5px solid rgba(0, 0, 0, 0.1);
 }
+*/
 .hris-profile-table, .hris-profile-table-edit {
     position: relative;
 }

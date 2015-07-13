@@ -27,7 +27,7 @@ function(){
                 // the height of our list should be the height of our portal - height of our bottom buttons
 				var buttonHeight = self.element.find(".opsportal-widget-nav-sub").outerHeight(true);
 				//self.list.resize(data.height - buttonHeight);
-				self.element.find('.genlist-widget-inner').css("height", data.height+'px');
+				self.element.find('.op-widget-body').css("height", data.height+'px');
 
 			    var mastheadHeight = self.element.find(".opsportal-widget-masthead").outerHeight(true);
 
