@@ -94,6 +94,13 @@ function(){
         },
 
 */
+        resize: function(data) {
+
+            this._super(data);
+
+            this.element.find('.op-stage').css("height", (data.height )+ "px");
+        },
+
 
         '.ad-item-add click': function($el, ev) {
 

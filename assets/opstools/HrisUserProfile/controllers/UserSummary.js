@@ -25,6 +25,8 @@ function(){
 			// listen for resize notifications
             AD.comm.hub.subscribe('opsportal.resize', function (key, data) {
 
+                self.element.find('#hris-user-basic-information').css('height', data.height+'px');
+                
 				//self.element.find(".opsportal-stage-container").css("height", data.height + "px");
 				//self.element.find(".op-stage").css("height", data.height + "px");
 				

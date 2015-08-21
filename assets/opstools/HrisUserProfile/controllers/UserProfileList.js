@@ -22,20 +22,8 @@ function(){
 
             // listen for resize notifications
             AD.comm.hub.subscribe('hrisuserprofile.resize', function (key, data) {
-                self.element.css("height", data.height + "px");
 
-                // the height of our list should be the height of our portal - height of our bottom buttons
-				var buttonHeight = self.element.find(".opsportal-widget-nav-sub").outerHeight(true);
-				//self.list.resize(data.height - buttonHeight);
-				self.element.find('.op-widget-body').css("height", data.height+'px');
-
-			    var mastheadHeight = self.element.find(".opsportal-widget-masthead").outerHeight(true);
-
-				self.element.find('.opsportal-nav-list').css("height", (data.height -mastheadHeight -5 -15) + "px");
-
-				// now we apply a padding to our widget container so that the list drops below the masthead
-				self.element.find(".genlist-widget-inner")
-				    .css("padding-top", (mastheadHeight+5) + "px");
+                self.ProfileList.resize(data);
             });
         },
 
@@ -45,6 +33,9 @@ function(){
 
             // insert our base DOM with the Column contents: objectlist, and bottom elements
             this.element.html(can.view(this.options.templateDOM, {} ));
+
+            // create an Op Widget on our element:
+            this.ProfileList = new AD.op.Widget(this.element);
         },
 		
         
