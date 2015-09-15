@@ -22,12 +22,11 @@
   },
   "homepage": "https://github.com/appdevdesigns/opstool-hrisUserProfile",
   "dependencies": {
-    "ad-utils": "git://github.com/appdevdesigns/ad-utils"
+    "ad-utils": "appdevdesigns/ad-utils"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "mocha": "^1.20.1",
-    "mocha-phantomjs": "^3.4.1",
-    "phantomjs": "^1.9.7-8"
+    "barrels": "^1.5.0",
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
   }
 }
