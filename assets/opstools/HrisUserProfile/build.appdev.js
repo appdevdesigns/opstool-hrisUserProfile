@@ -11,11 +11,11 @@
  */
 
 
-
 var AD = require('ad-utils');
 var path = require('path');
 var async = require('async');
 var fs = require('fs');
+var transform = require("steal-tools").transform;
 
 
 module.exports = {
@@ -30,19 +30,17 @@ module.exports = {
      * @param {fn} cb   The callback fn to run when command is complete.
      *                  The callback follows the usual node: cb(err) format.
      */
-    command:function(builder, cb) {
+    command: function (builder, cb) {
 
         var self = this;
 
         // this is expected to be running the /assets directory
 
-        // build command:  ./cjs steal/buildjs OpsPortal opstools/HrisUserProfile
-
 
         //// NOTE: the build command will attempt to rebuild OpsPortal/production.[js,css].  We don't
         //// want to do that here, so we'll have to backup the original files and return them when we are done.
 
-        var backUpName= '';
+        var backUpName = '';
         var backUpCSS = '';
 
         async.series([
@@ -51,69 +49,115 @@ module.exports = {
             // step 1:  backup the original OpsPortal/production.* files.
             function (next) {
 
+                AD.log('<green>backing up</green> OpsPortal production files');
 
-                backUpName = builder.backupProduction({ base:'OpsPortal', file:'production.js'});
-                backUpCSS = builder.backupProduction({ base:'OpsPortal', file:'production.css'});
+                backUpName = builder.backupProduction({ base: 'OpsPortal', file: 'production.js' });
+                backUpCSS = builder.backupProduction({ base: 'OpsPortal', file: 'production.css' });
 
                 next();
             },
 
 
 
-            // step 2:  run our build command
-            function(next){
+            // step 2:  build js files
+            function (next) {
 
-                // build command:  ./cjs steal/buildjs OpsPortal opstools/HrisUserProfile
+                // build command:  ./cjs steal/buildjs OpsPortal opstools/hrisUserProfile
 
-                AD.log('<green>building</green> opstools/HrisUserProfile');
+                AD.log('<green>building</green> opstools/hrisUserProfile JS files');
 
-                AD.spawn.command({
-                    command:'./cjs',
-                    // options:[path.join('opstools', 'HrisUserProfile', 'build.js')],
-                    options:[path.join('steal', 'buildjs'), 'OpsPortal', path.join('opstools', 'HrisUserProfile')],
-shouldEcho:true,
-                    // exitTrigger:'opstools/HrisUserProfile/production.css'
-                })
-                .fail(function(err){
-                    AD.log.error('<red>could not complete opstools/HrisUserProfile build!</red>');
-                    next(err);
-                })
-                .then(function(){
+                // Minify js/ejs files
+                transform({
+                    main: path.join('opstools', 'HrisUserProfile', 'HrisUserProfile'),
+                    config: "stealconfig.js"
+                }, {
+                        minify: true,
+                        noGlobalShim: true,
+                        ignore: [
+                            /^.*(.css)+/, // Ignore css files
+                            /^(?!opstools\/HrisUserProfile.*)/, // Ignore all are not plugin scripts
+                        ]
+                    }).then(function (transform) {
 
-                   next();
+                        // Get the main module and it's dependencies as a string
+                        var main = transform();
 
-                });
+                        fs.writeFile(path.join('opstools', 'HrisUserProfile', 'production.js'), main.code, "utf8", function (err) {
+                            if (err) {
+                                AD.log.error('<red>could not write minified JS file !</red>', err);
+                                next(err);
+                            }
 
+                            next();
+                        });
+                    })
+                    .catch(function (err) {
+                        AD.log.error('<red>could not complete opstools/HrisUserProfile JS build!</red>', err);
+                        next(err);
+                    });
             },
 
+            // step 3:  build css files
+            function (next) {
+                AD.log('<green>building</green> opstools/HrisUserProfile CSS files');
 
+                // Minify css files
+                transform({
+                    main: path.join('opstools', 'HrisUserProfile', 'HrisUserProfile'),
+                    config: "stealconfig.js"
+                }, {
+                        minify: true,
+                        noGlobalShim: true,
+                        ignore: [
+                            /^(?!.*(.css)+)/, // Get only css files
+                            /^(?!opstools\/HrisUserProfile.*)/, // Ignore all are not plugin scripts
+                        ]
+                    }).then(function (transform) {
+                        var main = transform();
 
-            // step 3:  replace our original OpsPortal/production.* files
+                        fs.writeFile(path.join('opstools', 'HrisUserProfile', 'production.css'), main.code, "utf8", function (err) {
+                            if (err) {
+                                AD.log.error('<red>could not write minified CSS file !</red>', err);
+                                next(err);
+                            }
+
+                            next();
+                        });
+                    })
+                    .catch(function (err) {
+                        AD.log.error('<red>could not complete opstools/HrisUserProfile CSS build!</red>', err);
+                        next(err);
+                    });
+            },
+
+            // step 4:  replace our original OpsPortal/production.* files
             function(next) {
+                AD.log('<green>replacing</green> OpsPortal production files');
 
-                builder.replaceProduction({ base:'OpsPortal', file:'production.js', backup: backUpName });
-                builder.replaceProduction({ base:'OpsPortal', file:'production.css', backup: backUpCSS });
+                builder.replaceProduction({ base: 'OpsPortal', file: 'production.js', backup: backUpName });
+                builder.replaceProduction({ base: 'OpsPortal', file: 'production.css', backup: backUpCSS });
                 next();
             },
 
 
 
-            // step 4:  patch our production.js to reference OpsPortal/production.js 
-            function(next) {
+            // step 5:  patch our production.js to reference OpsPortal/production.js 
+            function (next) {
+                AD.log('<green>patching</green> OpsPortal production files');
 
                 var patches = [
-                    { file:path.join('opstools', 'HrisUserProfile', 'production.js'), tag:'packages/OpsPortal-HrisUserProfile.js', replace:'OpsPortal/production.js'}
+                    { file: path.join('opstools', 'HrisUserProfile', 'production.js'), tag: 'packages/OpsPortal-HrisUserProfile.js', replace: 'OpsPortal/production.js' }
                 ];
 
                 builder.patchFile(patches, next);
-            }
+            },
 
 
-        ], function( err, results) {
+
+        ], function (err, results) {
 
             cb(err);
         });
 
     }
 }
-

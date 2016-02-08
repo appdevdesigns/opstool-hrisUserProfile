@@ -11,7 +11,7 @@ steal(
         'opstools/HrisUserProfile/controllers/UserSummary.js',
 
         // views:
-        '//opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
+        'opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
    
 function(){
 
@@ -21,7 +21,7 @@ function(){
         init: function( element, options ) {
             var self = this;
             options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
+                    templateDOM: '/opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
                     resize_notification: 'hrisuserprofile.resize',
                     tool:null   // the parent opsPortal Tool() object
             }, options);

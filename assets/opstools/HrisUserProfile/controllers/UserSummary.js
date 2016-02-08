@@ -2,7 +2,7 @@
 steal(
         // List your Controller's dependencies here:
         'appdev',
-        '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs',
+        'opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs',
 function(){
 
 
@@ -12,7 +12,7 @@ function(){
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs'
+                    templateDOM: '/opstools/HrisUserProfile/views/UserSummary/UserSummary.ejs'
             }, options);
 
             // call parent init()

@@ -12,7 +12,7 @@ function(){
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserProfileList/UserProfileList.ejs'
+                    templateDOM: '/opstools/HrisUserProfile/views/UserProfileList/UserProfileList.ejs'
             }, options);
 
             // call parent init()
