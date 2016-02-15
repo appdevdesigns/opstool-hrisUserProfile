@@ -1,27 +1,25 @@
 
 steal(
         // List your Controller's dependencies here:
-        'appdev',
-        'bootstrap.js',
-        'font-awesome.css',
-        'GenericList.js',
-        'OpsPortal/classes/OpsTool.js',
         'opstools/HrisUserProfile/controllers/UserList.js',
         'opstools/HrisUserProfile/controllers/UserProfileList.js',
         'opstools/HrisUserProfile/controllers/UserSummary.js',
 
         // views:
-        '//opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
+        'opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
    
 function(){
-
-
+    System.import('appdev').then(function() {
+        steal.import('bootstrap',
+                        'font-awesome.css',
+                        'js/GenericList',
+                        'OpsPortal/classes/OpsTool').then(function() {
     AD.Control.OpsTool.extend('HrisUserProfile', {
 
         init: function( element, options ) {
             var self = this;
             options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
+                    templateDOM: '/opstools/HrisUserProfile/views/HrisUserProfile/HrisUserProfile.ejs',
                     resize_notification: 'hrisuserprofile.resize',
                     tool:null   // the parent opsPortal Tool() object
             }, options);
@@ -111,4 +109,6 @@ function(){
     });
 
 
+});
+});
 });
