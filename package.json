@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/appdevdesigns/opstool-hrisUserProfile",
   "dependencies": {
-    "ad-utils": "appdevdesigns/ad-utils"
+    "ad-utils": "appdevdesigns/ad-utils#develop",
+    "steal-tools": "^0.13.3"
   },
   "devDependencies": {
     "barrels": "^1.5.0",

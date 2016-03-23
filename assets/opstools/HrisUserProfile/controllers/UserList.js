@@ -1,16 +1,18 @@
 steal(
         // List your Controller's dependencies here:
-        'appdev',
-        '//opstools/HrisUserProfile/views/UserList/UserList.ejs',
+        'opstools/HrisUserProfile/views/UserList/UserList.ejs',
 function(){
-
+System.import('appdev').then(function() {
+    steal.import('can/construct/super/super', 
+                    'appdev/control/control',
+                    'appdev/comm/hub').then(function() {
 
     AD.Control.extend('opstools.HrisUserProfile.UserList', { 
 
         init: function( element, options ) {
             var self = this;
             this.options = AD.defaults({
-                    templateDOM: '//opstools/HrisUserProfile/views/UserList/UserList.ejs'
+                    templateDOM: '/opstools/HrisUserProfile/views/UserList/UserList.ejs'
             }, options);
 
             // call parent init()
@@ -61,5 +63,6 @@ function(){
 
     });
 
-
+});
+});
 });
