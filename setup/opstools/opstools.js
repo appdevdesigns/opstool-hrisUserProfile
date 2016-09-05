@@ -7,11 +7,11 @@ module.exports = [
 
     { 
         key:'hris.profile', 
-        permissions:'adcore.developer, hris.profile', 
+        permissions:'hris.profile', 
         icon:'fa-user', 
         controller:'HrisUserProfile',
-        label:'opp.toolProfile',
-        context:'opsportal',
+        label:'Hris User Profile - demo',
+        // context:'opsportal',
         isController:true, 
         options:{}, 
         version:'0' 
