@@ -24,10 +24,17 @@ System.import('appdev').then(function() {
 
 			this.element.find('#idOfPassportDiv').hide();
 
-			// listen for resize notifications
-            AD.comm.hub.subscribe('opsportal.resize', function (key, data) {
 
-                self.element.find('#hris-user-basic-information').css('height', data.height+'px');
+			// listen for resize notifications
+            this.resizeID = AD.comm.hub.subscribe('opsportal.resize', function (key, data) {
+
+                if (self.element) {
+                    self.element.find('#hris-user-basic-information').css('height', data.height+'px');
+                } else {
+
+                    // must have been removed, but still being called.
+                    AD.comm.hub.unsubscribe(self.resizeID);
+                }
                 
 				//self.element.find(".opsportal-stage-container").css("height", data.height + "px");
 				//self.element.find(".op-stage").css("height", data.height + "px");

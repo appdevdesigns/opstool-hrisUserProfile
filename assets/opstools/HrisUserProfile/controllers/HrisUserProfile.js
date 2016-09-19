@@ -28,8 +28,8 @@ function(){
             // call parent init()
             this._super(element, options);
 
-            // Call parent init
-            AD.classes.opsportal.OpsTool.prototype.init.apply(this, arguments);
+            // // Call parent init
+            // AD.classes.opsportal.OpsTool.prototype.init.apply(this, arguments);
 
             this.dataSource = this.options.dataSource; // AD.models.Projects;
 

@@ -45,9 +45,13 @@ System.import('appdev').then(function() {
 
 //             });
             // listen for resize notifications
-            AD.comm.hub.subscribe('hrisuserprofile.resize', function (key, data) {
+            this.resizeID = AD.comm.hub.subscribe('hrisuserprofile.resize', function (key, data) {
 
-                self.UserList.resize(data);
+                if (self.element) {
+                    self.UserList.resize(data);
+                } else {
+                    AD.comm.hub.unsubscribe(self.resizeID);
+                }
             });
         },
 
