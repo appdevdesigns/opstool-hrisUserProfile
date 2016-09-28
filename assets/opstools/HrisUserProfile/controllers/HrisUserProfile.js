@@ -96,7 +96,9 @@ function(){
 
             this._super(data);
 
-            this.element.find('.op-stage').css("height", (data.height )+ "px");
+            if (this.element) {
+                this.element.find('.op-stage').css("height", (data.height )+ "px");
+            }
         },
 
 
